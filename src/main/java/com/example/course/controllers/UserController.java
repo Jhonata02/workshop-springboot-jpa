@@ -1,4 +1,4 @@
-package com.example.course.resources;
+package com.example.course.controllers;
 
 import com.example.course.entities.User;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(
         value = "/users"
 )
-public class UserResource {
+public class UserController {
 
     @GetMapping
     public ResponseEntity<User> findAll() {
