@@ -2,6 +2,7 @@ package com.example.course.services;
 
 import com.example.course.entities.User;
 import com.example.course.repositories.UserRepository;
+import jakarta.persistence.GenerationType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +30,17 @@ public class UserService {
 
     public void delete(Long id) {
         userRepository.deleteById(id);
+    }
+
+    public User update(Long id, User user) {
+        User entity = userRepository.getReferenceById(id);
+        updateData(entity, user);
+        return userRepository.save(entity);
+    }
+
+    private void updateData(User entity, User user) {
+        entity.setName(user.getName());
+        entity.setEmail(user.getEmail());
+        entity.setPhone(user.getPhone());
     }
 }
